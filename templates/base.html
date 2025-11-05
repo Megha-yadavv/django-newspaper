@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Newspaper</a>
+
+    <div class="collapse navbar-collapse">
+        {% if user.is_authenticated %}
+      <!-- Right-aligned dropdown -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           {{user.username}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end"> <!-- aligns dropdown to right -->
+            <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+              <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+          
+           
+          </ul>
+        </li>
+      </ul>
+           {% else %}
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+           guest user
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end"> <!-- aligns dropdown to right -->
+            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+              <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'signup' %}">signup</a></li>
+          
+           
+          </ul>
+        </li>
+      </ul>
+          
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock content %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
