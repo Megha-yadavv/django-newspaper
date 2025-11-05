@@ -1,1 +1,1 @@
-web: gunicorn newspaper.wsgi
+web: gunicorn newspaper.wsgi --bind 0.0.0.0:$PORT
