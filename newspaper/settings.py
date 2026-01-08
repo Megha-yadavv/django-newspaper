@@ -11,13 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv
-
-import os
-import dj_database_url
 
 
-load_dotenv()
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,9 +29,9 @@ SECRET_KEY = 'django-insecure-me_zcg^tj87gsz)ws5^y1jf1e3c8^xvpl^ky7dz@l^yot@dy56
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'daily-newspaper.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = [ 'https://daily-newspaper.up.railway.app']
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -54,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd Party
+    'articles',
     'crispy_forms', 
     'crispy_bootstrap5',
      'accounts',
@@ -95,7 +93,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'newspaper.wsgi.application'
-ENVIRONMENT = os.getenv("ENVIRONMENT")
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -107,9 +105,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = False
-if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
-    DATABASES['default'] = dj_database_url.parse(os.getenv('DATABASE_URL'), conn_max_age=600, ssl_require=True)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -135,7 +131,7 @@ STATICFILES_DIRS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
