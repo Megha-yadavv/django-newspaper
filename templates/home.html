@@ -1,25 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
- {% if user.is_authenticated %}
-<div>
-    <h2>home {{user.username}}!! you are logged in.</h2>
-</div>
-<div>
-    
-<form method = "POST" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-primary">Logout</button>
-</form>
-
-</div>
- {% else %}
  <div>
-    <h2> you are logged out!!</h2>
-</div>
-<div>
-    <a href="{% url 'login' %}">login</a><span>|</span>
-    <a href="{% url 'signup' %}">signup</a>
-</div>
-{% endif %}
+<h2>Newpaper App</h2>
+<p>newpaper app filled with creative articles</p>
+<a href= "{% url 'article_list' %}">view all articles</a>
+ </div>
 {% endblock content%}
